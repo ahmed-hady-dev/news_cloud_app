@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_cloud_app/services/news_service.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +22,19 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: GestureDetector(
+          onTap: () async {
+            NewsApi newsApi = NewsApi();
+            var articles = await newsApi.fetchArticlesByCategory('health');
+            for (var article in articles) {
+              print(article.title);
+            }
+          },
+          child: Text('fetch data'),
+        ),
+      ),
+    );
   }
 }

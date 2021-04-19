@@ -1,0 +1,49 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
+import '../models/article_model.dart';
+import '../models/articles_model.dart';
+
+class NewsApi {
+  final String apiKey = 'd38e71bea4d046d480ab55fa962fb897';
+  Future<List<Article>> fetchArticles() async {
+    try {
+      String url =
+          'https://newsapi.org/v2/top-headlines?country=eg&apiKey=$apiKey';
+      http.Response response = await http.get(url);
+      if (response.statusCode == 200) {
+        String data = response.body;
+        var jsonData = jsonDecode(data);
+        Articles articles = Articles.fromJson(jsonData);
+        List<Article> articlesList =
+            articles.articles.map((e) => Article.fromJson(e)).toList();
+        return articlesList;
+      } else {
+        print('status code = ${response.statusCode}');
+      }
+    } catch (ex) {
+      print(ex);
+    }
+  }
+
+  Future<List<Article>> fetchArticlesByCategory(String category) async {
+    try {
+      String url =
+          'https://newsapi.org/v2/top-headlines?country=eg&catgory=$category&apiKey=$apiKey';
+      http.Response response = await http.get(url);
+      if (response.statusCode == 200) {
+        String data = response.body;
+        var jsonData = jsonDecode(data);
+        Articles articles = Articles.fromJson(jsonData);
+        List<Article> articlesList =
+            articles.articles.map((e) => Article.fromJson(e)).toList();
+        return articlesList;
+      } else {
+        print('status code = ${response.statusCode}');
+      }
+    } catch (ex) {
+      print(ex);
+    }
+  }
+}

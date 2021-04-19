@@ -1,7 +1,7 @@
 import 'package:news_cloud_app/models/article_model.dart';
 
 class Articles {
-  final List<Article> articles;
+  final List<dynamic> articles;
 
   Articles({this.articles});
 
