@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_cloud_app/view_models/list_of_articles_view_model.dart';
 import 'package:news_cloud_app/views/home_view.dart';
+import 'package:provider/provider.dart';
 
 import 'services/news_service.dart';
 
@@ -11,13 +12,16 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'News Cloud',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider<ArticlesListViewModel>(
+      create: (context) => ArticlesListViewModel(),
+      child: MaterialApp(
+        title: 'News Cloud',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: HomeView(),
       ),
-      home: HomeView(),
     );
   }
 }
