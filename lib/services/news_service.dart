@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../models/article_model.dart';
-import '../models/articles_model.dart';
+import '../models/articles_list_model.dart';
 
 class NewsApi {
   final String apiKey = 'd38e71bea4d046d480ab55fa962fb897';
@@ -15,7 +15,7 @@ class NewsApi {
       if (response.statusCode == 200) {
         String data = response.body;
         var jsonData = jsonDecode(data);
-        Articles articles = Articles.fromJson(jsonData);
+        ArticlesList articles = ArticlesList.fromJson(jsonData);
         List<Article> articlesList =
             articles.articles.map((e) => Article.fromJson(e)).toList();
         return articlesList;
@@ -30,12 +30,12 @@ class NewsApi {
   Future<List<Article>> fetchArticlesByCategory(String category) async {
     try {
       String url =
-          'https://newsapi.org/v2/top-headlines?country=eg&catgory=$category&apiKey=$apiKey';
+          'https://newsapi.org/v2/top-headlines?country=eg&category=$category&apiKey=$apiKey';
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {
         String data = response.body;
         var jsonData = jsonDecode(data);
-        Articles articles = Articles.fromJson(jsonData);
+        ArticlesList articles = ArticlesList.fromJson(jsonData);
         List<Article> articlesList =
             articles.articles.map((e) => Article.fromJson(e)).toList();
         return articlesList;
