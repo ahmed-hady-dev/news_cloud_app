@@ -10,7 +10,7 @@ class NewsApi {
   Future<List<Article>> fetchArticles() async {
     try {
       String url =
-          'https://newsapi.org/v2/top-headlines?country=eg&apiKey=$apiKey';
+          'https://newsapi.org/v2/top-headlines?country=us&apiKey=$apiKey';
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {
         String data = response.body;
@@ -30,7 +30,7 @@ class NewsApi {
   Future<List<Article>> fetchArticlesByCategory(String category) async {
     try {
       String url =
-          'https://newsapi.org/v2/top-headlines?country=eg&category=$category&apiKey=$apiKey';
+          'https://newsapi.org/v2/top-headlines?country=us&category=$category&apiKey=$apiKey';
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {
         String data = response.body;
