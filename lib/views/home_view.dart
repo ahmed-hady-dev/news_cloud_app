@@ -115,6 +115,7 @@ class CategoryCard extends StatelessWidget {
         title,
         style: inLineStyle,
         softWrap: true,
+        semanticsLabel: 'afsfa',
       ),
     );
   }
