@@ -12,5 +12,3 @@ const TextStyle inLineStyle = TextStyle(
   fontSize: 20,
   decorationStyle: TextDecorationStyle.double,
 );
-String networkImagPlacholder =
-      'https://www.reuters.com/resizer/E1qy1NPXSaUNbKJL0h8UrG-GG24=/1200x628/smart/cloudfront-us-east-2.images.arcpublishing.com/reuters/YMJWQJL6TVNL3LGN3HA5DCNU74.jpg';

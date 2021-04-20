@@ -63,9 +63,9 @@ class _ArticleCardState extends State<ArticleCard> {
                     decoration: BoxDecoration(
                       color: Colors.black38,
                       image: DecorationImage(
-                        image: NetworkImage(variable[index].imageUrl == null
-                            ? networkImagPlacholder
-                            : variable[index].imageUrl),
+                        image: variable[index].imageUrl == null
+                            ? ExactAssetImage('assets/images/placeholder.jpg')
+                            : NetworkImage(variable[index].imageUrl),
                         fit: BoxFit.cover,
                       ),
                       borderRadius: BorderRadius.all(
