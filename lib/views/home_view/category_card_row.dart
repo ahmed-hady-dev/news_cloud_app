@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../models/category_card_model.dart';
-import '../view_models/list_of_articles_view_model.dart';
+import '../../models/category_card_model.dart';
+import '../../view_models/list_of_articles_view_model.dart';
 import 'category_card.dart';
 
 class CategoryCardRow extends StatefulWidget {

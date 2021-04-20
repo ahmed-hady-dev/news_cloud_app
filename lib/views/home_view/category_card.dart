@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utilities/text_styles.dart';
+import '../../utilities/text_styles.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
@@ -30,7 +30,7 @@ class CategoryCard extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.all(
-          Radius.circular(20.0),
+          Radius.circular(30.0),
         ),
       ),
       child: Text(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'view_models/list_of_articles_view_model.dart';
-import 'views/home_view.dart';
+import 'views/home_view/home_view.dart';
 
 void main() {
   runApp(MyApp());
