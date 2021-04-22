@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news_cloud_app/utilities/text_styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../models/article_model.dart';
+import '../../utilities/text_styles.dart';
 
 class ArticleView extends StatelessWidget {
   final Article article;
@@ -14,14 +14,16 @@ class ArticleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    Orientation orientation = MediaQuery.of(context).orientation;
     double height = size.height;
     double width = size.width;
     return Scaffold(
       body: Stack(
-        fit: StackFit.expand,
         children: [
           Positioned(
-            height: height * 0.45,
+            height: orientation == Orientation.portrait
+                ? height * 0.45
+                : height * 0.55,
             width: width,
             child: Container(
               decoration: BoxDecoration(
@@ -64,7 +66,10 @@ class ArticleView extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: height * 0.4,
+            // top: height * 0.4,
+            top: orientation == Orientation.portrait
+                ? height * 0.4
+                : height * 0.5,
             bottom: 0,
             right: 0,
             left: 0,

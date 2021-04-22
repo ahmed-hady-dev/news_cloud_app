@@ -24,6 +24,8 @@ class _ArticleCardState extends State<ArticleCard> {
 
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
+
     return FutureBuilder(
       future: client.fetchArticles(),
       builder: (context, AsyncSnapshot<List<Article>> snapshot) {
@@ -34,9 +36,7 @@ class _ArticleCardState extends State<ArticleCard> {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) => InkWell(
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
               onTap: () {
                 print('Card pressed');
                 Navigator.push(
@@ -48,39 +48,39 @@ class _ArticleCardState extends State<ArticleCard> {
                   ),
                 );
               },
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 18, vertical: 12),
-                    child: Center(
-                      child: Container(
-                        width: widget.width * 0.9,
-                        height: widget.height * 0.3,
-                        decoration: BoxDecoration(
-                          color: Colors.black38,
-                          image: DecorationImage(
-                            image: article[index].imageUrl == null
-                                ? ExactAssetImage(
-                                    'assets/images/placeholder.jpg')
-                                : NetworkImage(article[index].imageUrl),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 18,
+                  vertical: 12,
+                ),
+                child: Center(
+                  child: Container(
+                    width: orientation == Orientation.portrait
+                        ? widget.width * 0.9
+                        : widget.width,
+                    height: orientation == Orientation.portrait
+                        ? widget.height * 0.3
+                        : widget.height * 0.5,
+                    alignment: Alignment.bottomCenter,
+                    decoration: BoxDecoration(
+                      color: Colors.black38,
+                      image: DecorationImage(
+                        image: article[index].imageUrl == null
+                            ? ExactAssetImage('assets/images/placeholder.jpg')
+                            : NetworkImage(article[index].imageUrl),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: 0.0,
-                    right: 6,
-                    left: 6,
                     child: Container(
-                      margin: EdgeInsets.all(13),
-                      padding: EdgeInsets.all(14),
-                      alignment: Alignment.center,
+                      width: widget.width,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 18,
+                        vertical: 12,
+                      ),
+                      constraints: BoxConstraints.tightForFinite(),
                       decoration: BoxDecoration(
                         color: Colors.black26,
                         borderRadius: BorderRadius.all(
@@ -89,6 +89,7 @@ class _ArticleCardState extends State<ArticleCard> {
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
                             article[index].title == null
@@ -117,7 +118,7 @@ class _ArticleCardState extends State<ArticleCard> {
                       ),
                     ),
                   ),
-                ],
+                ),
               ),
             ),
           );

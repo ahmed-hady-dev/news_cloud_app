@@ -43,8 +43,11 @@ class _CategoryCardRowState extends State<CategoryCardRow> {
 
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
     return Container(
-      height: widget.height * 0.09,
+      height: orientation == Orientation.portrait
+          ? widget.height * 0.09
+          : widget.height * 0.19,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categoryCardList.length,

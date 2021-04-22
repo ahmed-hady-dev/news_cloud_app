@@ -18,10 +18,9 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
     return Container(
-      width: width * 0.4,
-      height: height * 0.07,
-      // margin: EdgeInsets.all(8),
+      width: orientation == Orientation.portrait ? width * 0.4 : width * 0.2,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Colors.black38,
