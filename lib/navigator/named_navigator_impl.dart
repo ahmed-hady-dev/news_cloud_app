@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../views/article_view/artticle_view.dart';
+import '../views/home_view/home_view.dart';
 import 'named_navigator.dart';
 
 class NamedNavigatorImpl implements NamedNavigator {
@@ -8,8 +10,10 @@ class NamedNavigatorImpl implements NamedNavigator {
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case Routes.SPLASH_ROUTE:
-      //   return MaterialPageRoute(builder: (_) => SplashView());
+      case Routes.ARTICLE_VIEW:
+        return MaterialPageRoute(builder: (_) => ArticleView());
+      case Routes.HOME_VIEW:
+        return MaterialPageRoute(builder: (_) => HomeView());
     }
     return MaterialPageRoute(builder: (_) => Container());
   }

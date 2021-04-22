@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
@@ -11,7 +10,7 @@ class NewsApi {
   Future<List<Article>> fetchArticles() async {
     try {
       String url =
-          'https://newsapi.org/v2/top-headlines?country=eg&apiKey=$apiKey';
+          'https://newsapi.org/v2/top-headlines?country=us&apiKey=$apiKey';
       http.Response response = await http.get(url);
       if (response.statusCode == 200) {
         String data = response.body;
@@ -20,7 +19,7 @@ class NewsApi {
         List<Article> articlesList =
             articles.articles.map((e) => Article.fromJson(e)).toList();
         return articlesList;
-      } else if (response.statusCode != HttpStatus.ok) {
+      } else if (response.statusCode != 200) {
       } else {
         print('status code = ${response.statusCode}');
       }

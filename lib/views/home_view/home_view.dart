@@ -21,12 +21,17 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        title: Text('News Cloud', style: headlineStyle),
+        title: RichText(
+          text: TextSpan(text: "News ", style: headlineStyle, children: [
+            TextSpan(
+                text: 'Cloud',
+                style: headlineStyle.copyWith(color: Colors.red[800])),
+          ]),
+        ),
       ),
       body: SingleChildScrollView(
         physics: ScrollPhysics(),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CategoryCardRow(height: height, width: width),
             ArticleCard(width: width, height: height),

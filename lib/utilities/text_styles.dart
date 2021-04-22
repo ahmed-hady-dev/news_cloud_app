@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const headlineStyle = TextStyle(
   fontFamily: 'Caslon',
-  fontSize: 32,
+  fontSize: 36,
   color: Colors.black,
   fontWeight: FontWeight.bold,
 );
