@@ -18,6 +18,7 @@ class NewsApi {
         ArticlesList articles = ArticlesList.fromJson(jsonData);
         List<Article> articlesList =
             articles.articles.map((e) => Article.fromJson(e)).toList();
+        print('news api refreshed');
         return articlesList;
       } else if (response.statusCode != 200) {
       } else {
@@ -26,6 +27,7 @@ class NewsApi {
     } catch (ex) {
       print(ex);
     }
+    print('news api refreshed');
   }
 
   Future<List<Article>> fetchArticlesByCategory(String category) async {
